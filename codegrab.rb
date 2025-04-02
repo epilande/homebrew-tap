@@ -11,7 +11,7 @@ class Codegrab < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/epilande/codegrab/releases/download/v1.0.2/codegrab_1.0.2_Darwin_x86_64.tar.gz"
-      sha256 "af8c17cb72712c109d89a2b57e77620104124f9debb30bf6365a6ec18bd51e58"
+      sha256 "9af11dbeec07f44134f52778c48d37ab14527a16c7690c804ec2c8f7a01a39f1"
 
       def install
         bin.install "grab"
@@ -19,7 +19,7 @@ class Codegrab < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/epilande/codegrab/releases/download/v1.0.2/codegrab_1.0.2_Darwin_arm64.tar.gz"
-      sha256 "c1f526c07607efa98e929d770b9ebbe10df2ca63cdafe046d8f9968ed1f50f18"
+      sha256 "d4c94395ea49a116c0b9c4174f9895226319fae6bb679e1b2552a6e7d14af7fa"
 
       def install
         bin.install "grab"
@@ -31,7 +31,7 @@ class Codegrab < Formula
     if Hardware::CPU.intel?
       if Hardware::CPU.is_64_bit?
         url "https://github.com/epilande/codegrab/releases/download/v1.0.2/codegrab_1.0.2_Linux_x86_64.tar.gz"
-        sha256 "6b2bfb65dfb39b6a27e45e7bbc83a9ac8e2122352eb9b088bf036c4688dd5abd"
+        sha256 "ffc52a760f455a30709ccf3fab9b2170649d65db48ffed02e06e626e60a2c5b1"
 
         def install
           bin.install "grab"
@@ -41,7 +41,7 @@ class Codegrab < Formula
     if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
         url "https://github.com/epilande/codegrab/releases/download/v1.0.2/codegrab_1.0.2_Linux_arm64.tar.gz"
-        sha256 "db26861362ac83ab769d285ea2e2eab8061a043be4538d977b28722d41c672bf"
+        sha256 "cd1915515188f482b527534de730cec6af034a9de9e3c4fb46ad7ba9dac660ff"
 
         def install
           bin.install "grab"
