@@ -5,21 +5,21 @@
 class Codegrab < Formula
   desc "An interactive CLI tool for selecting and bundling code into a single, LLM-ready output file"
   homepage "https://github.com/epilande/codegrab"
-  version "1.0.5"
+  version "1.0.6"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/epilande/codegrab/releases/download/v1.0.5/codegrab_1.0.5_Darwin_x86_64.tar.gz"
-      sha256 "d60aec0fed720fae34b5ffa0230fecdd9d054bc80d40aa876954df883a02a827"
+      url "https://github.com/epilande/codegrab/releases/download/v1.0.6/codegrab_1.0.6_Darwin_x86_64.tar.gz"
+      sha256 "ca8c56b423901acc211f2b062f77f41d3af48f1819df79bdad3e19a3d8ec582a"
 
       def install
         bin.install "grab"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/epilande/codegrab/releases/download/v1.0.5/codegrab_1.0.5_Darwin_arm64.tar.gz"
-      sha256 "fdfee2926fb0c5fc6f5cdcc355d177893e7dac9ac0f2777087d71c5f0b232212"
+      url "https://github.com/epilande/codegrab/releases/download/v1.0.6/codegrab_1.0.6_Darwin_arm64.tar.gz"
+      sha256 "8f1a7af20e600d23f08be0ea8d8a8aeb106a9dd84446a726cda0b919a6d91dc3"
 
       def install
         bin.install "grab"
@@ -30,8 +30,8 @@ class Codegrab < Formula
   on_linux do
     if Hardware::CPU.intel?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/epilande/codegrab/releases/download/v1.0.5/codegrab_1.0.5_Linux_x86_64.tar.gz"
-        sha256 "cb7d30bd710637c527df0225ef2ea4abb0338979792361cf146a10cdcd31924b"
+        url "https://github.com/epilande/codegrab/releases/download/v1.0.6/codegrab_1.0.6_Linux_x86_64.tar.gz"
+        sha256 "2aa5be37c0f2fc080d783181977d5253e2ad5f5465aa1d32647348c286b92a38"
 
         def install
           bin.install "grab"
@@ -40,8 +40,8 @@ class Codegrab < Formula
     end
     if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/epilande/codegrab/releases/download/v1.0.5/codegrab_1.0.5_Linux_arm64.tar.gz"
-        sha256 "74aa58ba0efcceb838de180d08d81bf33c346241fe4290a672f01e676d79fcb2"
+        url "https://github.com/epilande/codegrab/releases/download/v1.0.6/codegrab_1.0.6_Linux_arm64.tar.gz"
+        sha256 "5789e0de9bb1b1af314c4965c108a08d5c1944a3866ee2ed3bdc59453a09f5ff"
 
         def install
           bin.install "grab"
