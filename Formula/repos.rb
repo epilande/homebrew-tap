@@ -1,22 +1,22 @@
 class Repos < Formula
   desc "A CLI tool for managing multiple git repositories"
   homepage "https://github.com/epilande/repos"
-  version "1.0.1"
+  version "1.0.2"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/epilande/repos/releases/download/v1.0.1/repos-macos-arm64"
-      sha256 "47f4b150a42aaf6ee5bbd92c5beb256183f78784052a738fcc9bf50a012fafc4"
+      url "https://github.com/epilande/repos/releases/download/v1.0.2/repos-macos-arm64"
+      sha256 "f05efa53e2c7b339d6653c04fbf6f952bd56976a394522d3dfd931a9957299f9"
     else
-      url "https://github.com/epilande/repos/releases/download/v1.0.1/repos-macos-x64"
-      sha256 "bbd6ffd930d3f6ce7695c08a6eb61a26c40efc3e02b54c44169bd9ff65220297"
+      url "https://github.com/epilande/repos/releases/download/v1.0.2/repos-macos-x64"
+      sha256 "df6540ccaa8d57f6d78501d34baa283f14c054a279e1833c55a54afe044b858d"
     end
   end
 
   on_linux do
-    url "https://github.com/epilande/repos/releases/download/v1.0.1/repos-linux-x64"
-    sha256 "1e669eac8494131700ab93b9413c167792d051bf3a074dd7b308900527e91b3c"
+    url "https://github.com/epilande/repos/releases/download/v1.0.2/repos-linux-x64"
+    sha256 "d5521cde9d97117a0d380b749e456a423bd23abc8f2969ad50c388364227767d"
   end
 
   def install
