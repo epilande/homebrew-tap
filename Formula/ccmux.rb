@@ -1,22 +1,22 @@
 class Ccmux < Formula
   desc "Monitor AI coding agent sessions running in tmux"
   homepage "https://github.com/epilande/ccmux"
-  version "1.0.2"
+  version "1.1.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/epilande/ccmux/releases/download/v1.0.2/ccmux-macos-arm64"
-      sha256 "e0f84cfeef264de6d5aacdc9cf96046ee9b476fab80a0afc08c3534603436a56"
+      url "https://github.com/epilande/ccmux/releases/download/v1.1.0/ccmux-macos-arm64"
+      sha256 "852419bfb8904584bf703d4f53f8de6a8980859ca73883b2b5da9274342397ed"
     else
-      url "https://github.com/epilande/ccmux/releases/download/v1.0.2/ccmux-macos-x64"
-      sha256 "d3606702d0b1fda57de35f77ba2e09698d420578a28429c428dfce983e7f8f25"
+      url "https://github.com/epilande/ccmux/releases/download/v1.1.0/ccmux-macos-x64"
+      sha256 "9a3c81c435c1e7c58d94db415c6c42088ab147610a7d5572afc4eadc4afa4ac3"
     end
   end
 
   on_linux do
-    url "https://github.com/epilande/ccmux/releases/download/v1.0.2/ccmux-linux-x64"
-    sha256 "9de3c8787d64808ad1764aa914ef27da699c568bacfe4767b666eb7e9d8d66dc"
+    url "https://github.com/epilande/ccmux/releases/download/v1.1.0/ccmux-linux-x64"
+    sha256 "78d90440780d602d7ea3c1ab09576446cda8dd187f8898033c7aed81987a6397"
   end
 
   def install
