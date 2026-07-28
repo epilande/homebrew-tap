@@ -1,7 +1,7 @@
 class Ccmux < Formula
   desc "Monitor AI coding agent sessions running in tmux"
   homepage "https://github.com/epilande/ccmux"
-  version "1.2.1"
+  version "1.2.2"
   license "MIT"
 
   on_macos do
@@ -10,22 +10,22 @@ class Ccmux < Formula
     # Approve/Deny buttons, inline reply, per-session grouping, and retraction
     # (ccmux falls back to osascript without it).
     resource "notifier" do
-      url "https://github.com/epilande/ccmux/releases/download/v1.2.1/ccmux-notifier.zip"
-      sha256 "2e12fe456b52d2bf4399ce8a0b910b4baef1a382de1dcf033dc03bcc3d2025b7"
+      url "https://github.com/epilande/ccmux/releases/download/v1.2.2/ccmux-notifier.zip"
+      sha256 "f8e457be33419c364cbef4404926466e06577916f8bf79453e02b3bf9455df94"
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/epilande/ccmux/releases/download/v1.2.1/ccmux-macos-arm64"
-      sha256 "3f02ef84f2546f491875840e7fbe346661159d921087f8e327b0ff7db71add46"
+      url "https://github.com/epilande/ccmux/releases/download/v1.2.2/ccmux-macos-arm64"
+      sha256 "5962866369a23f96dcc0f5419a76d860107812ef6036a1b673fb40ccdfb62244"
     else
-      url "https://github.com/epilande/ccmux/releases/download/v1.2.1/ccmux-macos-x64"
-      sha256 "b89c64495ca1679658cbda3d50cdb188247f17a486ae5fc46245cc5c04b5f90b"
+      url "https://github.com/epilande/ccmux/releases/download/v1.2.2/ccmux-macos-x64"
+      sha256 "5ddc812adbfb96e91ebf608fea70ffd70f9aec2b3288604a3644eac0e0881364"
     end
   end
 
   on_linux do
-    url "https://github.com/epilande/ccmux/releases/download/v1.2.1/ccmux-linux-x64"
-    sha256 "24cd0e1bad80d221678d9032e00db182cd5f3480064cf401e4930e172cb5e08f"
+    url "https://github.com/epilande/ccmux/releases/download/v1.2.2/ccmux-linux-x64"
+    sha256 "81e3efd95f2a8c761c575b2351399959485ae2ca25cffc017c1723fba3d0cf81"
   end
 
   def install
