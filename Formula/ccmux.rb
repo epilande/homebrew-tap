@@ -1,7 +1,7 @@
 class Ccmux < Formula
   desc "Monitor AI coding agent sessions running in tmux"
   homepage "https://github.com/epilande/ccmux"
-  version "1.3.2"
+  version "1.4.0"
   license "MIT"
 
   on_macos do
@@ -10,27 +10,31 @@ class Ccmux < Formula
     # Approve/Deny buttons, inline reply, per-session grouping, and retraction
     # (ccmux falls back to osascript without it).
     resource "notifier" do
-      url "https://github.com/epilande/ccmux/releases/download/v1.3.2/ccmux-notifier.zip"
-      sha256 "08f36c250cfab36ec351b60235f51a85891e8e37b7f139d105bcccfa1dac0890"
+      url "https://github.com/epilande/ccmux/releases/download/v1.4.0/ccmux-notifier.zip"
+      sha256 "c9ef9f2d2962e403be0494e525169ed353dc44602878321def2c633bd1ff4fea"
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/epilande/ccmux/releases/download/v1.3.2/ccmux-macos-arm64"
-      sha256 "a88a9a95d8f1be48d04e6a192b472d5b5578768c6903c70d2685dc4cbb7e3366"
+      url "https://github.com/epilande/ccmux/releases/download/v1.4.0/ccmux-macos-arm64"
+      sha256 "95e4f410ee8c71d8693ef42515d26b824a94fd34838b4170f5df2db1f4ba2d0b"
     else
-      url "https://github.com/epilande/ccmux/releases/download/v1.3.2/ccmux-macos-x64"
-      sha256 "21b5c19ea80e99b84a9ba05896c08547a9db02d2f270962fad74ef703cf0ff0d"
+      url "https://github.com/epilande/ccmux/releases/download/v1.4.0/ccmux-macos-x64"
+      sha256 "d5742fb13bad2719c28acd7d4290381fc11297a732e28d99f068a3e12a0da188"
     end
   end
 
   on_linux do
-    url "https://github.com/epilande/ccmux/releases/download/v1.3.2/ccmux-linux-x64"
-    sha256 "2df88e7dc75b0635cbcdc69363904d1c151b5b3482fed7decbc73f03469051f9"
+    url "https://github.com/epilande/ccmux/releases/download/v1.4.0/ccmux-linux-x64"
+    sha256 "f2b4b527d17fd91388c8b5dfb33c2cd69a489427d84fe7ee096bb48507e436aa"
   end
 
   def install
     binary_name = stable.url.split("/").last
     bin.install binary_name => "ccmux"
+
+    # `ccmux completion <shell>` only prints a static script: no daemon,
+    # tmux, or HOME involved, so it is safe to run in the build sandbox.
+    generate_completions_from_executable(bin/"ccmux", "completion")
 
     # Stage the notarized helper app alongside the binary. The ccmux daemon
     # resolves it at ../libexec/ccmux-notifier.app relative to bin/ccmux.
