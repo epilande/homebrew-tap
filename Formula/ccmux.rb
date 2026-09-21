@@ -1,7 +1,7 @@
 class Ccmux < Formula
   desc "Monitor AI coding agent sessions running in tmux"
   homepage "https://github.com/epilande/ccmux"
-  version "1.4.1"
+  version "1.4.2"
   license "MIT"
 
   on_macos do
@@ -10,29 +10,29 @@ class Ccmux < Formula
     # Approve/Deny buttons, inline reply, per-session grouping, and retraction
     # (ccmux falls back to osascript without it).
     resource "notifier" do
-      url "https://github.com/epilande/ccmux/releases/download/v1.4.1/ccmux-notifier.zip"
-      sha256 "ed0e1b2d8d9d0c0908249125ec3f3ed96908eda54d244efcc4c7f3c6bbf73411"
+      url "https://github.com/epilande/ccmux/releases/download/v1.4.2/ccmux-notifier.zip"
+      sha256 "a4ed63b1cc3cdd849ffaeb54ae3b8d4aa90f1d4585b27b0de6a00a61872dba2d"
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/epilande/ccmux/releases/download/v1.4.1/ccmux-macos-arm64"
-      sha256 "e02a6f8336c7afac626b602c5ee7deaedef94ef5b87f767f136897c166f0dac3"
+      url "https://github.com/epilande/ccmux/releases/download/v1.4.2/ccmux-macos-arm64"
+      sha256 "f79353fef9af80fc5b2e45e179c700e836ae18d13871ee5ba60ab6df80e1b169"
     else
-      url "https://github.com/epilande/ccmux/releases/download/v1.4.1/ccmux-macos-x64"
-      sha256 "44f8b9de0a80ca4805fed878422265593a06dcc39e24cd5eb134416c211b2549"
+      url "https://github.com/epilande/ccmux/releases/download/v1.4.2/ccmux-macos-x64"
+      sha256 "067ba461dc6c66bb38f7b7a30ca74c01b32b47640659fdf7c94a976174f478e9"
     end
   end
 
   on_linux do
-    url "https://github.com/epilande/ccmux/releases/download/v1.4.1/ccmux-linux-x64"
-    sha256 "fb80f9569ebaed64bb2dd1fa5968507ad5d33c50b88421c07fc6f629bd9dc8d6"
+    url "https://github.com/epilande/ccmux/releases/download/v1.4.2/ccmux-linux-x64"
+    sha256 "b4eeef6aac007f7f01699647a65f94fb97260554b82ab012fb1577a38dbd4b5b"
   end
 
   def install
     binary_name = stable.url.split("/").last
     bin.install binary_name => "ccmux"
     # The release asset is a bare binary, downloaded as 0644. Homebrew only
-    # fixes bin/ permissions after `install` returns, so make it executable
+    # fixes bin/ permissions after  returns, so make it executable
     # here or the completion step below fails with EACCES.
     chmod 0755, bin/"ccmux"
 
