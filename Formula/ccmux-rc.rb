@@ -1,14 +1,8 @@
-# Temporary release-candidate formula for testing pre-releases. Installs the
-# same layout as the stable `ccmux` formula but from the RC tag; remove this
-# file once the RC ships as a stable version. Conflicts with `ccmux` (same
-# binary name) — `brew unlink ccmux` before installing.
 class CcmuxRc < Formula
   desc "Monitor AI coding agent sessions running in tmux (release candidate)"
   homepage "https://github.com/epilande/ccmux"
-  version "1.2.1-rc.1"
+  version "1.4.8"
   license "MIT"
-
-  conflicts_with "ccmux", because: "both install a `ccmux` binary"
 
   on_macos do
     # Actionable-notification backend: the signed + notarized ccmux-notifier
@@ -16,27 +10,37 @@ class CcmuxRc < Formula
     # Approve/Deny buttons, inline reply, per-session grouping, and retraction
     # (ccmux falls back to osascript without it).
     resource "notifier" do
-      url "https://github.com/epilande/ccmux/releases/download/v1.2.1-rc.1/ccmux-notifier.zip"
-      sha256 "4fcfe6f853cbc05e4c75fa69486f6e8100f3079bbd0258fc757b8f8fd315f4f1"
+      url "https://github.com/epilande/ccmux/releases/download/v1.4.8/ccmux-notifier.zip"
+      sha256 "dce85d269b83a515b320a473d45242a844bcefaa1998fe9bd6ecc3995b429b7c"
     end
 
     if Hardware::CPU.arm?
-      url "https://github.com/epilande/ccmux/releases/download/v1.2.1-rc.1/ccmux-macos-arm64"
-      sha256 "38855152a86c269030d0e2fb87d47f28435c1851d91f97c8548dc1de92f3b0c5"
+      url "https://github.com/epilande/ccmux/releases/download/v1.4.8/ccmux-macos-arm64"
+      sha256 "e26ac05b2e499796f8d30f95645eb872a1655eeb86c9aee6d55e6aead472020e"
     else
-      url "https://github.com/epilande/ccmux/releases/download/v1.2.1-rc.1/ccmux-macos-x64"
-      sha256 "b5d6d798143905a59b721771ac3fef5c12c0a1787a40741ef60b32371c45c361"
+      url "https://github.com/epilande/ccmux/releases/download/v1.4.8/ccmux-macos-x64"
+      sha256 "66a142e2b82058561fc72794f49129fa9d8ad9d2d1d23447c270b78f68393bd2"
     end
   end
 
   on_linux do
-    url "https://github.com/epilande/ccmux/releases/download/v1.2.1-rc.1/ccmux-linux-x64"
-    sha256 "a7b4f7674b61fda64cb4ac0c035bbb0d0d94e0c7eadd2743ff9b941fff09abc6"
+    url "https://github.com/epilande/ccmux/releases/download/v1.4.8/ccmux-linux-x64"
+    sha256 "fe8c36a94e3476ab2b1c1852e57b86f240eccedb874fb57556bfe70d7e775b68"
   end
+
+  conflicts_with "ccmux", because: "both install a ccmux binary"
 
   def install
     binary_name = stable.url.split("/").last
     bin.install binary_name => "ccmux"
+    # The release asset is a bare binary, downloaded as 0644. Homebrew only
+    # fixes bin/ permissions after  returns, so make it executable
+    # here or the completion step below fails with EACCES.
+    chmod 0755, bin/"ccmux"
+
+    # `ccmux completion <shell>` only prints a static script: no daemon,
+    # tmux, or HOME involved, so it is safe to run in the build sandbox.
+    generate_completions_from_executable(bin/"ccmux", "completion")
 
     # Stage the notarized helper app alongside the binary. The ccmux daemon
     # resolves it at ../libexec/ccmux-notifier.app relative to bin/ccmux.
@@ -53,6 +57,19 @@ class CcmuxRc < Formula
         end
       end
     end
+  end
+
+  def caveats
+    <<~EOS
+      To switch back to the ccmux formula:
+        ccmux daemon stop
+        brew uninstall ccmux-rc
+        brew install epilande/tap/ccmux
+        ccmux setup
+
+      If ccmux is already installed but unlinked, use
+      "brew link ccmux" in place of the install step.
+    EOS
   end
 
   test do
